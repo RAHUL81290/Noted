@@ -31,12 +31,9 @@ mongoose
 app.get("/check",async (req,res)=>{
   const find=await User.findById("6549c1c94b7b721c9b8b2d00");
   if(!find){
-    console.log("not found");
+    return res.json({message:"error"})
   }
-  else{
-    console.log(find);
-  }
-
+  res.json(find);
 
 })
 

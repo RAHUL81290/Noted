@@ -29,7 +29,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/check",(req,res)=>{
-  res.json({message:"api running"});
+  const find=User.find();
+  res.json({find});
 })
 
 app.listen(process.env.PORT_SERVER, (req, res) => {

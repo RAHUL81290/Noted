@@ -29,8 +29,11 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/check",(req,res)=>{
-  const find=User.find();
-  res.json({find});
+  const find=User.findById("6549c1c94b7b721c9b8b2d00");
+  if(!find){
+    return res.json({message:"error"});
+  }
+  res.json(find);
 })
 
 app.listen(process.env.PORT_SERVER, (req, res) => {

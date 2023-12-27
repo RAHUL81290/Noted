@@ -7,7 +7,6 @@ const User = require("./models/UserModel");
 const UserRoutes=require('./routes/UserRoutes');
 const FolderRoutes=require('./routes/FolderRoutes');
 const NoteRoutes=require('./routes/NoteRoutes');
-const Path=require('path');
 
 require('dotenv').config();
 
@@ -17,12 +16,6 @@ app.use(cors());
 app.use("/api/user",UserRoutes);
 app.use("/api/folder",FolderRoutes);
 app.use("/api/note",NoteRoutes);
-
-app.use(express.static(Path.join(__dirname,"../client/build")));
-
-app.get("*",function(req,res){
-  res.sendFile(Path.join(__dirname,"../client/build/index.html"));
-});
 
 mongoose
   .connect(
@@ -34,6 +27,10 @@ mongoose
   )
   .then(() => console.log("database connected"))
   .catch((err) => console.log(err));
+
+app.get("/check",(req,res)=>{
+  console.log("api working");
+})
 
 app.listen(process.env.PORT_SERVER, (req, res) => {
   console.log("server started");

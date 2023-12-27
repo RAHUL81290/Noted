@@ -29,7 +29,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/check",(req,res)=>{
-  console.log("api working");
+  res.json({message:"api running"});
 })
 
 app.listen(process.env.PORT_SERVER, (req, res) => {
